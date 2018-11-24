@@ -16,6 +16,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.css">
   <script type="text/javascript" src="https://rawgit.com/alvarotrigo/fullPage.js/dev/src/fullpage.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
   <app-root></app-root>
@@ -75,5 +76,57 @@ $('#toggle').click(function() {
    $(this).toggleClass('active');
    $('#overlay').toggleClass('open');
   });
+
+$(document).ready(function() {
+
+  var active1 = false;
+  var active2 = false;
+  var active3 = false;
+  var active4 = false;
+
+    $('.parent2').on('mousedown touchstart', function() {
+    
+    if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,125px)'});
+    else $(this).find('.test1').css({'background-color': 'dimGray', 'transform': 'none'}); 
+     if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(60px,105px)'});
+    else $(this).find('.test2').css({'background-color': 'darkGray', 'transform': 'none'});
+      if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'transform': 'translate(105px,60px)'});
+    else $(this).find('.test3').css({'background-color': 'silver', 'transform': 'none'});
+      if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'transform': 'translate(125px,0px)'});
+    else $(this).find('.test4').css({'background-color': 'silver', 'transform': 'none'});
+    active1 = !active1;
+    active2 = !active2;
+    active3 = !active3;
+    active4 = !active4;
+      
+    });
+});
+
+
+
+
+
+
+var menucontainer = document.querySelector(".menu-container");
+var overlay = document.querySelector(".overlay");
+var navigation = document.querySelector("nav");
+
+var barisactive = 0;
+
+menucontainer.addEventListener("click", function() {
+  if (barisactive == 0) {
+    overlay.classList.add("active");
+    overlay.classList.remove("non-active");
+    navigation.style.display = "block";
+    barisactive = 1;
+    menucontainer.classList.add("bar-active");
+  } else if (barisactive == 1) {
+    overlay.classList.add("non-active");
+    overlay.classList.remove("active");
+    navigation.style.display = "none";
+    barisactive = 0;
+    menucontainer.classList.remove("bar-active");
+  }
+});
 </script>
 </html>
